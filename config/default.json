@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://SReactDB:LegendPerry@cluster0-mztfy.mongodb.net/ReactDB?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken"
+}
