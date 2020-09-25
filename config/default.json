@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://SReactDB:LegendPerry@cluster0-mztfy.mongodb.net/ReactDB?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
+    "jwtSecret": "mysecrettoken",
+    "githubClientId":"bc3d9b67d2f592f8658c",
+    "githubSecret":"77572463fd184c9841b82e34576f58ddc32f034e"
 }
