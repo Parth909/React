@@ -7,7 +7,7 @@ import {register} from '../../actions/auth';
 //When Action is dispatched , Action is dispatched to all the reducers but only some will act based on the action
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   // This state is component level state
   // useState to manage the state of the form
   const [formData, setFormData] = useState({
@@ -34,6 +34,10 @@ const Register = ({ setAlert, register }) => {
       register({name, email, password})
     }
   };
+
+  if(isAuthenticated){
+    return <Redirect to="/dashboard"/>
+  }
 
   return (
     <Fragment>
@@ -97,13 +101,21 @@ Register.propTypes = {
   // setAlert is func & it is required
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
+const mapStateToProps = state => ({
+  // will give the state of the redux-store
+  isAuthenticated: state.auth.isAuthenticated
+  // but we add only a particular part as a prop
+});
+
 // this is making the *Action Creators* available as a prop to us
-export default connect(null,{ setAlert, register })(Register);
+export default connect(mapStateToProps,{ setAlert, register })(Register);
 
 // connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
 
+// export default connect(null,{ setAlert, register })(Register);
 // As mapStateToProps is null this component is not subscribed to the redux store
 
 

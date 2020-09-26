@@ -19,6 +19,9 @@ import setAuthToken from './utils/setAuthToken'
 const App = () => {
 
   useEffect(()=>{
+    if(localStorage.token){
+      setAuthToken(localStorage.token);
+    }  
     store.dispatch(loadUser());
   }, [])
 
