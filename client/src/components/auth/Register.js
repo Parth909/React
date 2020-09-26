@@ -91,13 +91,36 @@ const Register = ({ setAlert, register }) => {
   );
 };
 
-// this is like *mapStateToProps or mapDispatchToProps* this is like *mapActionsToProps* making the *Action Creator* available as a prop to us
 /* See on google */
+// THIS is for checking the types of the props
 Register.propTypes = {
   // setAlert is func & it is required
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
 };
 
-/* we can then use setAlert as prop in this component */
+// this is making the *Action Creators* available as a prop to us
 export default connect(null,{ setAlert, register })(Register);
+
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+
+// As mapStateToProps is null this component is not subscribed to the redux store
+
+
+
+// ------------- The ABOVE COMPONENT can also be written like this
+// The ABOVE ONE IS EASIER (It is personal preference)
+/*
+
+import { bindActionCreators } from 'redux'
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setAlert: bindActionCreators(setAlert, dispatch),
+    register: bindActionCreators(register, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Register);
+
+*/
